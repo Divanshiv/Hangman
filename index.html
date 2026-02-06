@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman Pro | Elite Word Pursuit</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <!-- Hidden input for mobile keyboard trigger -->
+    <input type="text" id="mobile-input" style="position: absolute; opacity: 0; pointer-events: none; z-index: -1;"
+        autocomplete="off" />
+
+    <div id="app">
+        <header class="header">
+            <h1>HANGMAN</h1>
+            <p class="status-message" id="status-message">Unmask the mystery word, or face the gallows.</p>
+        </header>
+
+        <main class="game-container">
+            <div class="hangman-svg-container">
+                <svg class="hangman-svg" viewBox="0 0 100 100" stroke="currentColor" stroke-width="3">
+                    <!-- Stand -->
+                    <path d="M20 90 L80 90" />
+                    <path d="M30 90 L30 10" />
+                    <path d="M30 10 L70 10" />
+                    <path d="M70 10 L70 20" />
+
+                    <!-- Body Parts -->
+                    <circle cx="70" cy="30" r="10" class="part" id="part-0" /> <!-- Head -->
+                    <line x1="70" y1="40" x2="70" y2="65" class="part" id="part-1" /> <!-- Body -->
+                    <line x1="70" y1="45" x2="50" y2="55" class="part" id="part-2" /> <!-- Left Arm -->
+                    <line x1="70" y1="45" x2="90" y2="55" class="part" id="part-3" /> <!-- Right Arm -->
+                    <line x1="70" y1="65" x2="55" y2="80" class="part" id="part-4" /> <!-- Left Leg -->
+                    <line x1="70" y1="65" x2="85" y2="80" class="part" id="part-5" /> <!-- Right Leg -->
+                </svg>
+            </div>
+
+            <div class="game-controls">
+                <div class="word-display" id="word-display"></div>
+                <div id="hint-display" class="hint-display"></div>
+
+                <div id="used-letters" class="used-letters" id="used-letters">
+                    <span class="label">Used:</span>
+                    <span class="letters" id="used-letters-list"></span>
+                </div>
+
+                <div class="keyboard" id="keyboard"></div>
+
+                <div class="turns-indicator">
+                    Chances Remaining: <span id="turns-count">6</span>
+                </div>
+            </div>
+        </main>
+
+        <div class="modal" id="game-modal">
+            <div class="modal-content">
+                <h2 id="modal-title">Ascension!</h2>
+                <p id="modal-message">The word was: <strong>...</strong></p>
+                <button class="btn-restart" id="btn-restart">New Challenge</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
